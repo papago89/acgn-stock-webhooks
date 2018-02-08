@@ -2,8 +2,12 @@ require('chromedriver');
 var fs = require('fs');
 var webdriver = require('selenium-webdriver');
 var data;
-var driver = new webdriver.Builder().forBrowser('chrome').build(); 
-
+var chromeBin = process.env.google_chrome_shim;
+var chromeOpts = { "binary": chromeBin};
+var chromeCapabilities = webdriver.Capabilities.chrome();
+chromeCapabilities.set('chromeOptions', chromeOpts);
+var driver = new webdriver.Builder().forBrowser('chrome').withCapabilities(chromeCapabilities).build(); 
+console.log(process.env.chrome);
 driver.get("https://acgn-stock.com/instantMessage");
 driver.sleep(5000)
 fs.readFile('./webhooks.js',function(error, content){ //讀取file.txt檔案的內容
