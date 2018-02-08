@@ -2,7 +2,7 @@ require('chromedriver');
 var fs = require('fs');
 var webdriver = require('selenium-webdriver');
 var data;
-var chromeBin = process.env.GOOGLE_CHROME_SHIM;
+var chromeBin = process.env.GOOGLE_CHROME_BIN;
 var chromeOpts = { "binary": chromeBin};
 var chromeCapabilities = webdriver.Capabilities.chrome();
 chromeCapabilities.set('chromeOptions', chromeOpts);
